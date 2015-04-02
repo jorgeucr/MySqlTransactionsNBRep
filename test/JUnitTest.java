@@ -45,10 +45,10 @@ public class JUnitTest {
      public void testing() {
          ClienteData clienteData = new ClienteData();
          Cliente cliente = new Cliente();
-         cliente.setNombreCliente("Juan");
+         cliente.setNombreCliente("Pedro");
          cliente.setApellido("Castillo Vindas");
          cliente.setCorreo("jorge@gmail.com");
-         clienteData.insertarCliente(cliente);
-         clienteData.insertarCliente(cliente);  
+         //clienteData.insertarCliente(cliente);
+         clienteData.insertarClienteSP(cliente);  
      }
 }
