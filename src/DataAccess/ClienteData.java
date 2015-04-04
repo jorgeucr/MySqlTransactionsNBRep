@@ -10,8 +10,11 @@ import Domain.Cliente;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.sql.Types;
+import java.util.LinkedList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -59,5 +62,31 @@ public class ClienteData {
         } catch (Exception e) {
             System.out.println(e);
         }
+    }
+
+    public LinkedList<Cliente> getClientes() {
+        LinkedList<Cliente> clientes = new LinkedList<Cliente>();
+        BDConnection bDConnection = BDConnection.getInstance();
+        try {
+            Statement statement = bDConnection.openConnection().createStatement();
+            ResultSet resultSet = statement.executeQuery("select * from cliente");
+            while (resultSet.next()) {                
+                Cliente cliente = new Cliente();
+                cliente.setId(resultSet.getInt(1));
+                cliente.setNombreCliente(resultSet.getString(2));
+                cliente.setApellido(resultSet.getString(3));
+                cliente.setCorreo(resultSet.getString(4));
+                clientes.addLast(cliente);
+            }
+        } catch (SQLException ex) {
+            System.out.print(ex.getMessage());
+        }finally{
+            try {
+                bDConnection.closeConnection();
+            } catch (SQLException ex) {
+                System.out.print(ex.getMessage());
+            }
+        }
+        return clientes;
     }
 }

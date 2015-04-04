@@ -49,6 +49,7 @@ public class JUnitTest {
          cliente.setApellido("Castillo Vindas");
          cliente.setCorreo("jorge@gmail.com");
          //clienteData.insertarCliente(cliente);
-         clienteData.insertarClienteSP(cliente);  
+         //clienteData.insertarClienteSP(cliente);  
+         clienteData.getClientes();
      }
 }
