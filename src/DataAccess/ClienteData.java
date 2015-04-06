@@ -89,4 +89,8 @@ public class ClienteData {
         }
         return clientes;
     }
+    
+    public void eliminarCliente(){
+        
+    }
 }
