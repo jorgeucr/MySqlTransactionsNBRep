@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Connection;
+package DataAccess;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -18,7 +18,7 @@ public class BDConnection {
     private static BDConnection bdConnection;
     private Connection connection = null;
 
-    public BDConnection() {
+    private BDConnection() {
 
     }
 

@@ -5,7 +5,6 @@
  */
 package DataAccess;
 
-import Connection.BDConnection;
 import Domain.Cliente;
 import java.sql.CallableStatement;
 import java.sql.Connection;
