@@ -13,8 +13,10 @@ import java.sql.SQLException;
  *
  * @author Jorge Castillo Vindas / jorge.castillovindas@ucr.ac.cr
  */
-public class BDConnection {
 
+
+public class BDConnection {
+int aux;
     private static BDConnection bdConnection;
     private Connection connection = null;
 
@@ -22,7 +24,7 @@ public class BDConnection {
 
     }
 
-    public static BDConnection getInstance() {
+    public synchronized static BDConnection getInstance() {
 
         if (bdConnection == null) {
             bdConnection = new BDConnection();
@@ -41,6 +43,10 @@ public class BDConnection {
     }
 
     public void closeConnection() throws SQLException {
-        connection.close();
+        try {
+            connection.close();
+        } catch (Exception e) {
+            System.out.print(e);
+        }
     }
 }
